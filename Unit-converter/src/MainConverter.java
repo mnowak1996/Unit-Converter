@@ -11,7 +11,7 @@ public class MainConverter extends Application{
         Parent layout = fxmlLoader.load();
         Scene scene = new Scene(layout);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Generator");
+        primaryStage.setTitle("Konverter");
         primaryStage.show();
     }
 }

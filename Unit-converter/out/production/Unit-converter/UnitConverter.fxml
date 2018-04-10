@@ -17,8 +17,8 @@
       <ComboBox fx:id="comboBox" prefHeight="25.0" prefWidth="429.0" promptText="Wybierz typ konwersji" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
          <children>
-            <TextField fx:id="pole" />
-            <Label fx:id="label" text="Label" />
+            <TextField />
+            <Label text="Label" />
          </children>
       </HBox>
       <Button mnemonicParsing="false" text="Konwertuj" />
