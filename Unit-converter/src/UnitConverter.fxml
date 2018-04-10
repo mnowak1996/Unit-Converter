@@ -21,6 +21,6 @@
             <Label fx:id="label" text="Label" />
          </children>
       </HBox>
-      <Button mnemonicParsing="false" text="Konwertuj" />
+      <Button mnemonicParsing="false" onAction="#Convert" text="Konwertuj" />
    </children>
 </VBox>
