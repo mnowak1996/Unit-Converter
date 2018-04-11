@@ -35,15 +35,16 @@ public class UnitConverter {
     }
     private double cal=2.54;
     private double wynik;
+    private double centymetry;
+    private double metry;
+
     @FXML
     private void Convert(){
         try {
             String value = String.valueOf(comboBox.getValue());
-//        value = value.replaceAll(",",".");
-
             switch (value) {
                 case "Centymetry na cale":
-                        double centymetry = Double.parseDouble(ReplaceComma(pole.getText()));
+                        centymetry = Double.parseDouble(ReplaceComma(pole.getText()));
                         wynik = (centymetry / cal);
                         label.setText("centymetrów to " + new DecimalFormat("##.##").format(wynik) + " cali");
                     break;
@@ -52,6 +53,17 @@ public class UnitConverter {
                     double wynik = cale * cal;
                     label.setText("cali to " + wynik + " centymetrów");
                     break;
+                case "Metry na centymetry":
+                    metry = Double.parseDouble(ReplaceComma(pole.getText()));
+                    wynik = metry * 100;
+                    label.setText("metrów to " + wynik + " centymetrów");
+                    break;
+                case "Centymetry na metry":
+                    centymetry = Double.parseDouble(ReplaceComma(pole.getText()));
+                    wynik = centymetry / 100;
+                    label.setText("centymatrów to " + wynik + " metrów");
+                    break;
+
             }
         }catch(Exception ex)
         {
@@ -68,13 +80,5 @@ public class UnitConverter {
         return a;
     }
 
-//    private boolean Validation(String a){
-//        boolean x = true;
-//        if(a.matches("[0-9]")){
-//            label.setText("Podales złe wartości");
-//            x=false;
-//        }
-//        return x;
-//    }
 
 }
