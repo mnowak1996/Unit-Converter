@@ -3,19 +3,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
-import java.awt.*;
 import java.text.DecimalFormat;
 
 public class UnitConverter {
 
     ObservableList<String> conversions = FXCollections.observableArrayList("Centymetry na cale",
-            "Cale na centymetry","Metry na centymetry","Centymetry na metry");
+            "Cale na centymetry","Metry na centymetry","Centymetry na metry","Litry na mililitry","Mililitry na litry","Litry na m3");
     // lista dni tygodnia typu Observable list
 
     @FXML
@@ -32,15 +29,20 @@ public class UnitConverter {
     @FXML
     private void initialize() {
         comboBox.setItems(conversions);
+        comboBox.getEditor().setFont(Font.font(30));
+
     }
     private double cal=2.54;
     private double wynik;
     private double centymetry;
     private double metry;
+    private double litry;
+    private double mililitry;
 
     @FXML
     private void Convert(){
         try {
+            Fonts();
             String value = String.valueOf(comboBox.getValue());
             switch (value) {
                 case "Centymetry na cale":
@@ -63,6 +65,21 @@ public class UnitConverter {
                     wynik = centymetry / 100;
                     label.setText("centymatrów to " + wynik + " metrów");
                     break;
+                case "Litry na mililitry":
+                    litry = Double.parseDouble(ReplaceComma(pole.getText()));
+                    wynik = litry*1000;
+                    label.setText("litrów to " + wynik + " mililitrów");
+                    break;
+                case "Mililitry na litry":
+                    mililitry = Double.parseDouble(ReplaceComma(pole.getText()));
+                    wynik = mililitry/1000;
+                    label.setText("mililitrów to " + wynik + " litrów");
+                    break;
+                case "Litry na m3":
+                    litry = Double.parseDouble(ReplaceComma(pole.getText()));
+                    wynik = litry/1000;
+                    label.setText("litrów to " + wynik + " m3");
+                    break;
 
             }
         }catch(Exception ex)
@@ -79,6 +96,9 @@ public class UnitConverter {
         }
         return a;
     }
-
+    private void Fonts(){
+        label.setTextFill(Color.BLACK);
+        label.setFont(Font.font(18));
+    }
 
 }
