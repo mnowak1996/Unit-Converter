@@ -5,7 +5,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
+import java.awt.*;
 import java.text.DecimalFormat;
 
 public class UnitConverter {
@@ -33,20 +37,27 @@ public class UnitConverter {
     private double wynik;
     @FXML
     private void Convert(){
-        String value = String.valueOf(comboBox.getValue());
+        try {
+            String value = String.valueOf(comboBox.getValue());
 //        value = value.replaceAll(",",".");
 
-        switch (value){
-            case "Centymetry na cale":
-                double centymetry =Double.parseDouble(ReplaceComma(pole.getText()));
-                wynik=(centymetry/cal);
-                label.setText("centymetrów to "+new DecimalFormat("##.##").format(wynik)+" cali");
-                break;
-            case "Cale na centymetry":
-                double cale =Double.parseDouble(ReplaceComma(pole.getText()));
-                double wynik=cale*cal;
-                label.setText("cali to "+wynik+" centymetrów");
-                break;
+            switch (value) {
+                case "Centymetry na cale":
+                        double centymetry = Double.parseDouble(ReplaceComma(pole.getText()));
+                        wynik = (centymetry / cal);
+                        label.setText("centymetrów to " + new DecimalFormat("##.##").format(wynik) + " cali");
+                    break;
+                case "Cale na centymetry":
+                    double cale = Double.parseDouble(ReplaceComma(pole.getText()));
+                    double wynik = cale * cal;
+                    label.setText("cali to " + wynik + " centymetrów");
+                    break;
+            }
+        }catch(Exception ex)
+        {
+            label.setTextFill(Color.RED);
+            label.setFont(Font.font(25));
+            label.setText("Podałeś złe dane");
         }
     }
 
@@ -56,5 +67,14 @@ public class UnitConverter {
         }
         return a;
     }
+
+//    private boolean Validation(String a){
+//        boolean x = true;
+//        if(a.matches("[0-9]")){
+//            label.setText("Podales złe wartości");
+//            x=false;
+//        }
+//        return x;
+//    }
 
 }
