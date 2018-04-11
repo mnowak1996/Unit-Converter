@@ -9,6 +9,9 @@ import javafx.scene.text.Font;
 
 import java.text.DecimalFormat;
 
+/**
+ * Created by Michał Nowak
+ */
 public class UnitConverter {
 
     ObservableList<String> conversions = FXCollections.observableArrayList("Centymetry na cale",
